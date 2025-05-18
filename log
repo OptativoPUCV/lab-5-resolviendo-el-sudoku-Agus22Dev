@@ -1,0 +1,29 @@
+Sun, May 18, 2025  1:09:02 PM: 
+ sudoku.c | 64 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 63 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'is_valid':
+sudoku.c:89:13: error: too few arguments to function 'verificar_fila'
+     return (verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo));
+             ^~~~~~~~~~~~~~
+sudoku.c:46:5: note: declared here
+ int verificar_fila(int sudo[9][9], int fila, int valor){
+     ^~~~~~~~~~~~~~
+sudoku.c:89:40: error: too few arguments to function 'verificar_columna'
+     return (verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo));
+                                        ^~~~~~~~~~~~~~~~~
+sudoku.c:59:5: note: declared here
+ int verificar_columna(int sudo[9][9], int columna, int valor){
+     ^~~~~~~~~~~~~~~~~
+sudoku.c:89:70: error: too few arguments to function 'verificar_cuadro'
+     return (verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo));
+                                                                      ^~~~~~~~~~~~~~~~
+sudoku.c:72:5: note: declared here
+ int verificar_cuadro(int sudo[9][9], int fila, int columna, int valor){
+     ^~~~~~~~~~~~~~~~
+sudoku.c:90:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1.exe: all warnings being treated as errors
+3f0e54c

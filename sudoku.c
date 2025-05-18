@@ -43,14 +43,76 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
+int verificar_fila(int sudo[9][9], int fila, int valor){
+    for (int i = 0; i < 9; i++) {
+        int vistos[10] = {0};
+        for (int j = 0; j < 9; j++) {
+            int val = sudo[i][j];
+            if (val == 0) continue;
+            if (vistos[val]) return 0;
+            vistos[val] = 1;
+        }
+    }
+    return 1;
+}
 
+int verificar_columna(int sudo[9][9], int columna, int valor){
+    for (int j = 0; j < 9; j++) {
+        int vistos[10] = {0};
+        for (int i = 0; i < 9; i++) {
+            int val = sudo[i][j];
+            if (val == 0) continue;
+            if (vistos[val]) return 0;
+            vistos[val] = 1;
+        }
+    }
+    return 1;
+}
+
+int verificar_cuadro(int sudo[9][9], int fila, int columna, int valor){
+    for (int k = 0; k < 9; k++) {
+        int vistos[10] = {0};
+        for (int p = 0; p < 9; p++) {
+            int i = 3 * (k / 3) + (p / 3);
+            int j = 3 * (k % 3) + (p % 3);
+            int val = sudo[i][j];
+            if (val == 0) continue;
+            if (vistos[val]) return 0;
+            vistos[val] = 1;
+        }
+    }
     return 1;
 }
 
 
+int is_valid(Node* n) {
+    return (verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo));
+}
+
+
+
 List* get_adj_nodes(Node* n){
     List* list=createList();
+    int fila = -1, col = -1;
+    for(int i = 0 ; i < 9 && fila == -1 ; i++){
+      for (int j = 0; j < 9; j++){
+        if(n->sudo[i][j] == 0){
+          fila = i;
+          col = j;
+        }
+      }
+    }
+    if(fila == -1) return list;
+    
+    for(int val = 1; val <= 9; val++){
+      Node* nuevo = copy(n);
+      nuevo->sudo[fila][col] = val;
+      if(is_valid(nuevo)){
+        pushBack(list, nuevo);
+      }else{
+        free(nuevo);
+      }
+    }
     return list;
 }
 
