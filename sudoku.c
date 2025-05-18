@@ -43,7 +43,7 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int verificar_fila(int sudo[9][9], int fila, int valor){
+int verificar_fila(int sudo[9][9]) {
     for (int i = 0; i < 9; i++) {
         int vistos[10] = {0};
         for (int j = 0; j < 9; j++) {
@@ -56,7 +56,7 @@ int verificar_fila(int sudo[9][9], int fila, int valor){
     return 1;
 }
 
-int verificar_columna(int sudo[9][9], int columna, int valor){
+int verificar_columna(int sudo[9][9]) {
     for (int j = 0; j < 9; j++) {
         int vistos[10] = {0};
         for (int i = 0; i < 9; i++) {
@@ -69,7 +69,7 @@ int verificar_columna(int sudo[9][9], int columna, int valor){
     return 1;
 }
 
-int verificar_cuadro(int sudo[9][9], int fila, int columna, int valor){
+int verificar_cuadro(int sudo[9][9]) {
     for (int k = 0; k < 9; k++) {
         int vistos[10] = {0};
         for (int p = 0; p < 9; p++) {
@@ -85,8 +85,9 @@ int verificar_cuadro(int sudo[9][9], int fila, int columna, int valor){
 }
 
 
+
 int is_valid(Node* n) {
-    return (verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo));
+    return verificar_fila(n->sudo) && verificar_columna(n->sudo) && verificar_cuadro(n->sudo);
 }
 
 
