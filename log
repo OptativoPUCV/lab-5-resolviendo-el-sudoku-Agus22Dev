@@ -62,3 +62,9 @@ test.c:7:8: error: '_strdup' defined but not used [-Werror=unused-function]
         ^~~~~~~
 cc1.exe: all warnings being treated as errors
 31f7af1
+Sun, May 18, 2025  1:36:03 PM: 
+ sudoku.c | 1 +
+ 1 file changed, 1 insertion(+)
+ tests:  7|1
+total_score: 55/70
+e8856ba
