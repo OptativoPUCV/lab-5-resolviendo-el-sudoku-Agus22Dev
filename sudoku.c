@@ -150,9 +150,8 @@ Node* DFS(Node* initial, int* cont){
 
         free(actual);
     }
+    return NULL;
   }
-  return NULL;
-}
 
 
 
