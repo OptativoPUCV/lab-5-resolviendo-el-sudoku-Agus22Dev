@@ -100,6 +100,7 @@ List* get_adj_nodes(Node* n){
         if(n->sudo[i][j] == 0){
           fila = i;
           col = j;
+          break;
         }
       }
     }
